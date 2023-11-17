@@ -5,7 +5,8 @@
 <ion-list>
   <ion-item-group *ngFor="let category of categories">
     <ion-item-divider *ngIf="getButtonsOfCategory(category.id).length > 0">
-      <ion-label class="category-label">{{ category.name }}</ion-label>
+        <!--  <ion-label> {{ catgegory.name }} </ion-label>-->
+        <span class="custom-label">{{ category.name }}</span>
     </ion-item-divider>
 
     <ion-item-sliding
