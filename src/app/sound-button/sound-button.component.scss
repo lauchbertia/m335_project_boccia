@@ -1,0 +1,12 @@
+ion-button {
+    --border-radius: 50%; 
+    color: white; 
+    font-size: 12px;
+    width: 80px; 
+    height: 80px; 
+    transition: background-color 0.3s; /* Übergang für die Hintergrundfarbe */
+  
+    /*&:active, &.ion-activated {
+      Beim drücken des Buttons
+    }*/
+  }

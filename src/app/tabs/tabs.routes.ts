@@ -25,23 +25,23 @@ export const routes: Routes = [
         path: 'tab4',
         children: [
           {
-            path: 'foods',
+            path: 'buttons',
             loadComponent: () =>
-              import('../food-list/food-list.component').then((m) => m.FoodListComponent),
+              import('../sound-button-detail/sound-button-detail.component').then((m) => m.SoundButtonDetailComponent),
           },
           {
-            path: 'food',
+            path: 'button',
             loadComponent: () =>
-              import('../food-detail/food-detail.component').then((m) => m.FoodDetailComponent),
+            import('../sound-button-detail/sound-button-detail.component').then((m) => m.SoundButtonDetailComponent),
           },
           {
-            path: 'food/:id',
+            path: 'button/:id',
             loadComponent: () =>
-              import('../food-detail/food-detail.component').then((m) => m.FoodDetailComponent),
+            import('../sound-button-detail/sound-button-detail.component').then((m) => m.SoundButtonDetailComponent),
           },
           {
             path: '',
-            redirectTo: 'foods',
+            redirectTo: 'buttons',
             pathMatch: 'full',
           }
         ],
