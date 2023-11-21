@@ -1,18 +1,17 @@
 import { Injectable } from "@angular/core";
-
 import { LoadingController } from "@ionic/angular";
 import { createClient, SupabaseClient } from "@supabase/supabase-js";
-import { SoundButton } from "src/app/data/sound-button";
+import { Item } from '../data/shopping-list';
 import { environment } from "src/environments/environment";
 
-export const BUTTON_TABLE = 'button'
+export const ITEM_TABLE = 'items'
 export const CATEGORY_TABLE = 'category'
 
 @Injectable({
   providedIn: 'root'
 })
 
-export class SoundButtonService {
+export class ShoppingListService {
 
   private supabase: SupabaseClient
 
@@ -24,9 +23,9 @@ export class SoundButtonService {
     return this.loadingCtrl.create()
   }
 
-  async getButtons () {
+  async getItems () {
     const { data, error } = await this.supabase
-      .from(BUTTON_TABLE)
+      .from(ITEM_TABLE)
       .select('*')
       .order('name')
 
@@ -42,9 +41,9 @@ export class SoundButtonService {
     return data || []
   }
 
-  async getButton (id: number) {
+  async getItem (id: number) {
     const { data, error } = await this.supabase
-      .from(BUTTON_TABLE)
+      .from(ITEM_TABLE)
       .select('*')
       .eq('id', id)
       .single()
@@ -65,24 +64,23 @@ export class SoundButtonService {
   }
 
 
-  async updateButton (button: SoundButton) {
+  async updateItem (item: Item) {
     const {data, error} = await this.supabase
-      .from(BUTTON_TABLE)
-      .update(button)
-      .eq('id', button.id)
+      .from(ITEM_TABLE)
+      .update(item)
+      .eq('id', item.id)
       .select()
 
     return data
   }
 
-  async createButton(button : SoundButton) {
+  async createItem(item : Item) {
 
     const {data, error} = await this.supabase
-      .from(BUTTON_TABLE)
+      .from(ITEM_TABLE)
       .insert({
-        name: button.name,
-        category: button.category,
-        position: button.position
+        name: item.name,
+        category: item.category,
       })
       .select('*')
       .single();
@@ -90,11 +88,11 @@ export class SoundButtonService {
     return data
   }
 
-  async deleteButton (button: SoundButton) {
+  async deleteItem (item: Item) {
     const {data, error} = await this.supabase
-      .from(BUTTON_TABLE)
+      .from(ITEM_TABLE)
       .delete()
-      .eq('id', button.id)
+      .eq('id', item.id)
       .select()
 
     return data

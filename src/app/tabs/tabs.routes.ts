@@ -18,35 +18,62 @@ export const routes: Routes = [
       },
       {
         path: 'tab3',
+        children: [
+          {
+            path: 'item',
+            loadComponent: () =>
+              import('../item-detail/item-detail.component').then((m) => m.ItemDetail),
+          },
+          {
+            path: 'items',
+            loadComponent: () =>
+            import('../item-detail/item-detail.component').then((m) => m.ItemDetail),
+          },
+          {
+            path: 'item/:id',
+            loadComponent: () =>
+            import('../item-detail/item-detail.component').then((m) => m.ItemDetail),
+          },
+          {
+            path: 'item',
+            redirectTo: 'tab3',
+            pathMatch: 'full',
+          }
+        ],
         loadComponent: () =>
           import('../tab3/tab3.page').then((m) => m.Tab3Page),
       },
       {
         path: 'tab4',
+        loadComponent: () =>
+          import('../tab4/tab4.page').then((m) => m.Tab4Page),
+      },
+      {
+        path: 'tab5',
         children: [
           {
-            path: 'buttons',
+            path: 'lists',
             loadComponent: () =>
-              import('../sound-button-detail/sound-button-detail.component').then((m) => m.SoundButtonDetailComponent),
+              import('../shopping-list/shopping-list.component').then((m) => m.ShoppingListComponent),
           },
           {
-            path: 'button',
+            path: 'item',
             loadComponent: () =>
-            import('../sound-button-detail/sound-button-detail.component').then((m) => m.SoundButtonDetailComponent),
+            import('../item-detail/item-detail.component').then((m) => m.ItemDetail),
           },
           {
-            path: 'button/:id',
+            path: 'item/:id',
             loadComponent: () =>
-            import('../sound-button-detail/sound-button-detail.component').then((m) => m.SoundButtonDetailComponent),
+            import('../item-detail/item-detail.component').then((m) => m.ItemDetail),
           },
           {
-            path: '',
-            redirectTo: 'buttons',
+            path: 'item',
+            redirectTo: 'lists',
             pathMatch: 'full',
           }
         ],
         loadComponent: () =>
-          import('../tab4/tab4.page').then((m) => m.Tab4Page),
+          import('../tab5/tab5.page').then((m) => m.Tab5Page),
       },
       {
         path: '',

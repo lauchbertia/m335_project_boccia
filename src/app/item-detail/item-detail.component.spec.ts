@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { SoundButtonComponent } from './sound-button.component';
+import { ListDetailComponent } from './item-detail.component';
 
-describe('ButtonComponent', () => {
-  let component: SoundButtonComponent;
-  let fixture: ComponentFixture<SoundButtonComponent>;
+describe('SoundButtonDetailComponent', () => {
+  let component: ListDetailComponent;
+  let fixture: ComponentFixture<ListDetailComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ SoundButtonComponent ],
+      declarations: [ ListDetailComponent ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(SoundButtonComponent);
+    fixture = TestBed.createComponent(ListDetailComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));
