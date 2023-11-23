@@ -6,6 +6,8 @@ import { environment } from "src/environments/environment";
 
 export const ITEM_TABLE = 'items'
 export const CATEGORY_TABLE = 'category'
+export const LIST_TABLE = 'list'
+export const ITEMSINLIST_TABLE = 'items_in_list'
 
 @Injectable({
   providedIn: 'root'
@@ -41,13 +43,21 @@ export class ShoppingListService {
     return data || []
   }
 
+  async getLists () {
+    const { data, error } = await this.supabase
+      .from(LIST_TABLE)
+      .select('*')
+      .order('name')
+
+    return data || []
+  }
+
   async getItem (id: number) {
     const { data, error } = await this.supabase
       .from(ITEM_TABLE)
       .select('*')
       .eq('id', id)
       .single()
-
     return data || {}
   }
 
@@ -56,6 +66,17 @@ export class ShoppingListService {
   async getCategory(id: number) {
     const { data, error } = await this.supabase
       .from(CATEGORY_TABLE)
+      .select('*')
+      .eq('id', id)
+      .single()
+
+    return data || {}
+  }
+
+
+  async getList(id: number) {
+    const { data, error } = await this.supabase
+      .from(LIST_TABLE)
       .select('*')
       .eq('id', id)
       .single()

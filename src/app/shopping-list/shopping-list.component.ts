@@ -11,7 +11,7 @@ import { ShoppingListService } from '../services/shopping-list.service';
   templateUrl: './shopping-list.component.html',
   styleUrls: ['./shopping-list.component.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, ]
+  imports: [IonicModule, CommonModule ]
 })
 export class ShoppingListComponent  implements OnInit {
 
