@@ -14,6 +14,5 @@ export class ItemList {
   public id! : number
   public id_ref_list! : number
   public id_ref_item! : number
-
 }
   

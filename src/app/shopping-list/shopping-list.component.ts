@@ -5,13 +5,15 @@ import { Router } from '@angular/router';
 import { Item } from '../data/shopping-list';
 import { Category } from '../data/category';
 import { ShoppingListService } from '../services/shopping-list.service';
+import { ItemDetail } from '../item-detail/item-detail.component';
+import { ItemListComponent } from '../item-list/item-list.component';
 
 @Component({
   selector: 'app-list',
   templateUrl: './shopping-list.component.html',
   styleUrls: ['./shopping-list.component.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule ]
+  imports: [IonicModule, CommonModule, ItemDetail, ItemListComponent, ShoppingListComponent]
 })
 export class ShoppingListComponent  implements OnInit {
 

@@ -6,6 +6,12 @@ const config: CapacitorConfig = {
   webDir: 'www',
   server: {
     androidScheme: 'https'
+  },
+  plugins: {
+    SplashScreen: {
+      launchShowDuration: 3000,
+      imagePath: 'android\app\resources\splash.png'
+    }
   }
 };
 

@@ -11,7 +11,7 @@ import { Item } from '../data/shopping-list';
   selector: 'app-item-detail',
   templateUrl: './item-detail.component.html',
   styleUrls: ['./item-detail.component.scss'],
-  imports: [IonicModule,FormsModule,ReactiveFormsModule,CommonModule],
+  imports: [IonicModule,FormsModule, ReactiveFormsModule,CommonModule],
   standalone: true
 })
 export class ItemDetail  implements OnInit {
@@ -70,9 +70,7 @@ export class ItemDetail  implements OnInit {
 
   saveItem (formData : any) {
     console.log('Form Data:', formData);
-    this.item = Object.assign({}, formData); // Achten Sie darauf, eine Kopie zu erstellen
-
-    console.log('Item to be saved:', this.item);
+    this.item = Object.assign(formData); 
 
     if (this.item.id) {
       this.shoppingListService.updateItem(this.item)

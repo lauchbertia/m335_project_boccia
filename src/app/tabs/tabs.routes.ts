@@ -18,28 +18,6 @@ export const routes: Routes = [
       },
       {
         path: 'tab3',
-        children: [
-          {
-            path: 'item',
-            loadComponent: () =>
-              import('../item-detail/item-detail.component').then((m) => m.ItemDetail),
-          },
-          {
-            path: 'items',
-            loadComponent: () =>
-            import('../item-detail/item-detail.component').then((m) => m.ItemDetail),
-          },
-          {
-            path: 'item/:id',
-            loadComponent: () =>
-            import('../item-detail/item-detail.component').then((m) => m.ItemDetail),
-          },
-          {
-            path: 'item',
-            redirectTo: 'tab3',
-            pathMatch: 'full',
-          }
-        ],
         loadComponent: () =>
           import('../tab3/tab3.page').then((m) => m.Tab3Page),
       },
@@ -67,7 +45,7 @@ export const routes: Routes = [
             import('../item-detail/item-detail.component').then((m) => m.ItemDetail),
           },
           {
-            path: 'item',
+            path: '',
             redirectTo: 'lists',
             pathMatch: 'full',
           }

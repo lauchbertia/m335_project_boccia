@@ -26,3 +26,83 @@
 
   </ion-item-group>
 </ion-list>
+
+<ion-card color="light">
+
+  
+
+  <ion-card-content>
+
+    <form
+      (ngSubmit)="saveItemList(listForm.value)"
+      [formGroup]="listForm">
+
+        <ion-input
+          label="Name"
+          labelPlacement="floating"
+          errorText="Name fehlt"
+          formControlName="name"
+          [required]="true"
+          
+        ></ion-input>
+
+      <ion-button
+        type="cancel"
+        (click)="back()"
+        fill="clear">Abbrechen
+      </ion-button>
+
+      <ion-button
+        type="submit"
+        fill="clear">Speichern
+      </ion-button>
+
+
+    </form>
+    <form
+      (ngSubmit)="saveItem(itemForm.value)"
+      [formGroup]="itemForm">
+
+        <ion-input
+          label="Name"
+          labelPlacement="floating"
+          errorText="Name fehlt"
+          formControlName="name"
+          [required]="true"
+          
+        ></ion-input>
+
+
+        <ion-select
+          label="Kategorie"
+          labelPlacement="floating"
+          helperText="Wählen Sie eine Kategorie"
+          formControlName="category"
+          [required]="true"
+        >
+            <ion-select-option
+              *ngFor="let category of categories"
+              [value]="category.id">
+              {{ category.name }}
+            </ion-select-option>
+
+        </ion-select>
+
+      <ion-button
+        type="cancel"
+        (click)="back()"
+        fill="clear">Abbrechen
+      </ion-button>
+
+      <ion-button
+        type="submit"
+        fill="clear">Speichern
+      </ion-button>
+
+
+    </form>
+
+
+  </ion-card-content>
+
+</ion-card>
