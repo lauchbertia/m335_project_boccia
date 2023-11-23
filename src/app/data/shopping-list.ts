@@ -1,8 +1,8 @@
 export class Item {
     public id! : number
-    public created_at : string = ''
+    //public created_at : string = ''
     public name : string = ''
-    public category?: number |  null
+    public category: number = 0
   }
 
 export class List {

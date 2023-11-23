@@ -76,7 +76,7 @@ export class ShoppingListComponent  implements OnInit {
 
   saveItem (formData : any) {
     this.item = Object.assign(formData)
-
+    console.log("Item", this.item);
     if (this.item.id) {
       this.shoppingListService.updateItem(this.item)
         .then(payload=>{

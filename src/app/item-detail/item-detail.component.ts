@@ -51,11 +51,7 @@ export class ItemDetail  implements OnInit {
       this.shoppingListService.getItem(id).then(
         (data: Item) => {
           this.item = data;
-          this.itemForm = this.formBuilder.group({
-            id: [this.item.id],
-            name: [this.item.name, Validators.required],
-            category: [this.item.category || 0, Validators.required]
-          });
+          this.itemForm = this.formBuilder.group(this.item);
         });
     }
     this.shoppingListService.getCategories().then(

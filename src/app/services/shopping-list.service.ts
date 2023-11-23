@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { LoadingController } from "@ionic/angular";
 import { createClient, SupabaseClient } from "@supabase/supabase-js";
-import { Item } from '../data/shopping-list';
+import { Item, List } from '../data/shopping-list';
 import { environment } from "src/environments/environment";
 
 export const ITEM_TABLE = 'items'
@@ -95,6 +95,16 @@ export class ShoppingListService {
     return data
   }
 
+  async updateList (list: List) {
+    const {data, error} = await this.supabase
+      .from(LIST_TABLE)
+      .update(list)
+      .eq('id', list.id)
+      .select()
+
+    return data
+  }
+
   async createItem(item : Item) {
 
     const {data, error} = await this.supabase
@@ -102,6 +112,17 @@ export class ShoppingListService {
       .insert({
         name: item.name,
         category: item.category,
+      })
+      .select('*')
+      .single();
+    return data
+  }
+
+  async createList(list : List) {
+    const {data, error} = await this.supabase
+      .from(LIST_TABLE)
+      .insert({
+        name: list.name
       })
       .select('*')
       .single();
@@ -114,6 +135,16 @@ export class ShoppingListService {
       .from(ITEM_TABLE)
       .delete()
       .eq('id', item.id)
+      .select()
+
+    return data
+  }
+
+  async deleteList (list: List) {
+    const {data, error} = await this.supabase
+      .from(LIST_TABLE)
+      .delete()
+      .eq('id', list.id)
       .select()
 
     return data

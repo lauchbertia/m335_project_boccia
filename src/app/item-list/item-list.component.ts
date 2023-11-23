@@ -20,6 +20,9 @@ export class ItemListComponent implements OnInit {
   categories: Array<Category> | null = []
   lists: Array<List> | null = []
 
+  listId: number | undefined;
+  newItemName: string = '';
+
   constructor(
     private shoppingListService: ShoppingListService,
     private router: Router) { }
@@ -54,7 +57,7 @@ export class ItemListComponent implements OnInit {
   getItemsOfList(listId: number): Array<Item> {
     let filteredItems: Array<Item> = [];
     if (this.items) {
-      filteredItems = this.items.filter(item => item.id=== listId);
+      filteredItems = this.items.filter(item => item.id === listId);
     }
     return filteredItems;
   }
@@ -68,14 +71,14 @@ export class ItemListComponent implements OnInit {
     await this.router.navigate(['tabs/tab2/', list.id])
   }
 
-  /*delete (food:Food) {
-    this.shoppingListService.deleteFood(food)
-      .then(payload =>  {
-        this.shoppingListService.getFoods()
+  delete(list: List) {
+    this.shoppingListService.deleteList(list)
+      .then(payload => {
+        this.shoppingListService.getLists()
           .then(data => {
-            this.foods = data
+            this.lists = data
           })
       })
-  }*/
+  }
 
 }
