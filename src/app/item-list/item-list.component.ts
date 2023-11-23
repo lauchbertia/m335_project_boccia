@@ -100,15 +100,22 @@ export class ItemListComponent implements OnInit {
   }
 
   async addItem(list: List, formData: any) {
-    this.shoppingListService.updateList(list);
-    this.shoppingListService.createList(formData)
+    // Aktualisiere die vorhandene Liste mit den neuen Daten
+    list.name = formData.name;
+  
+    // Aktualisiere die Liste über den Service
+    await this.shoppingListService.updateList(list);
+  
+    console.log('Updated List:', list);
+  
+    // Erstelle das neue Element in der Liste
+    await this.shoppingListService.createItem(formData)
       .then(payload => {
         console.log('Created Item:', payload);
         this.back();
       });
-
-
   }
+  
 
   delete(list: List) {
     this.shoppingListService.deleteList(list)
@@ -142,4 +149,10 @@ export class ItemListComponent implements OnInit {
         });
     }
   }
+
+
+  // 
+  //
+
+  
 }

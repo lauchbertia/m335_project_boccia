@@ -11,18 +11,20 @@ import { Item } from '../data/shopping-list';
   selector: 'app-item-detail',
   templateUrl: './item-detail.component.html',
   styleUrls: ['./item-detail.component.scss'],
-  imports: [IonicModule,FormsModule, ReactiveFormsModule,CommonModule],
+  imports: [IonicModule,FormsModule,ReactiveFormsModule,CommonModule],
   standalone: true
 })
 export class ItemDetail  implements OnInit {
 
   item : Item = new Item()
   categories : Array<Category> = []
+  imageUrl: string = ''
 
   public itemForm = new FormGroup({
     id: new FormControl(0),
     name: new FormControl('', Validators.required),
-    category: new FormControl(0, Validators.required)
+    category: new FormControl(0, Validators.required),
+    imageUrl: new FormControl('')
   });
 
   constructor(
@@ -68,10 +70,12 @@ export class ItemDetail  implements OnInit {
     await this.router.navigate(['tabs','tab3'])
   }
 
-  saveItem (formData : any) {
+  saveItem(formData: any) {
     console.log('Form Data:', formData);
-    this.item = Object.assign(formData); 
-
+    this.item = Object.assign({}, formData);
+  
+    console.log('Item to be saved:', this.item);
+  
     if (this.item.id) {
       this.shoppingListService.updateItem(this.item)
         .then(payload => {
@@ -85,6 +89,10 @@ export class ItemDetail  implements OnInit {
           this.back();
         });
     }
+  
+    // Formular zurücksetzen
+    this.itemForm.reset();
+  }
 }
 
  /* saveItem (formData : any) {
@@ -103,4 +111,4 @@ export class ItemDetail  implements OnInit {
       }
   }*/
 
-}
+
