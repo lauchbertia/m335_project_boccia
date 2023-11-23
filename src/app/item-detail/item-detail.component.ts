@@ -50,6 +50,7 @@ export class ItemDetail  implements OnInit {
       const id = Number.parseInt(this.route.snapshot.paramMap.get('id') as string);
       this.shoppingListService.getItem(id).then(
         (data: Item) => {
+          console.log("DATA-LOG:" + data);
           this.item = data;
           this.itemForm = this.formBuilder.group(this.item);
         });
